@@ -7,6 +7,7 @@ namespace App\DBAL\Types;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Platforms\PostgreSqlPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 
@@ -17,15 +18,19 @@ use Doctrine\DBAL\Types\Type;
 class DateTimeMicrosecondsType extends Type
 {
 
-    const TYPENAME = 'datetime'; // modify to match your type name
+    const TYPENAME = 'datetime';
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         if (isset($fieldDeclaration['version']) && $fieldDeclaration['version'] == true) {
             return 'TIMESTAMP';
         }
+//        dump($platform->getName());exit();
+        if($platform->getName() == "postgresql")
+            return 'TIMESTAMP(6) WITHOUT TIME ZONE';
+        else
+            return 'DATETIME(6)';
 
-        return 'DATETIME(6)';
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)

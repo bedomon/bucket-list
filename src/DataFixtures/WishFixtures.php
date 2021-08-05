@@ -32,6 +32,12 @@ class WishFixtures extends Fixture
                 $wish->setIsPublished(false);
             }
 
+            //gestion d'une date dans le passé en retirant n jours à la date du jours (n aléatoire)
+            $n = mt_rand(0,678);
+            $date = new \DateTime('now');
+            $date->sub(new \DateInterval('P'.$n.'D'));
+            $wish->setCreatedAt($date);
+
             $manager->persist($wish);
         }
 
