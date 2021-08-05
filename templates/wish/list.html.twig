@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }}: Souhaits{% endblock title %}
+
+{% block main %}
+    <h1>Liste des souhaits</h1>
+
+    <a href="{{ url('wish_details', {"id": 5}) }}">Click me</a>
+{% endblock main %}

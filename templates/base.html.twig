@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bucket-List{% endblock title %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datatables.css') }}">
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+    <script type="application/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/datatables.js') }}"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a class="site-title" href="{{ url('default_home') }}" title="Bucket-List | Home">
+            <img src="{{ asset('img/logo.png') }}" alt="Bucket-List"> Bucket-List
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{{ url('default_home') }}" title="Bucket-List | Home">Home</a></li>
+                <li><a href="{{ url('default_about_us') }}" title="Contact">About Us</a></li>
+                <li><a href="{{ url('wish_list') }}" title="Contact">Souhaits</a></li>
+                <li><a href="{{ url('default_contact') }}" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>{% block main %}{% endblock main %}</main>
+
+    <footer>
+        © {{ "now"|date("Y") }} Bucket-List
+    </footer>
+</div>
+
+{% block javascripts %}{% endblock javascripts %}
+</body>
+</html>
